@@ -29,7 +29,8 @@ export function Auth() {
 		mutationKey: ['auth'],
 		mutationFn: (data: IAuthForm) =>
 			authService.main(isLoginForm ? 'login' : 'register', data),
-		onSuccess() {
+		onSuccess: data => {
+			localStorage.setItem('userId', data!.data.user.id.toString())
 			toast.success('Successfully login!')
 			reset()
 			push(DASHBOARD_PAGES.HOME)

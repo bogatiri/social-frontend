@@ -1,4 +1,13 @@
+import { IPosts } from './post.types'
+import { IBase } from './root.types'
 
+export enum FamilyStatus {
+  notMarried= 'notMarried',
+  Married ='Married',
+  Dating ='Dating',
+  InLove = 'InLove',
+  ActivelyLooking = 'ActivelyLooking',
+}
 
 export interface IAuthForm {
 	email: string
@@ -7,15 +16,16 @@ export interface IAuthForm {
 	accessToken: string
 }
 
-
-
-export interface IUser {
-	id: string
+export interface IUser extends IBase {
 	name?: string
+	about?: string
 	email?: string
-	phone?: string
 	lastName?:string
-	createdAt: Date
+	avatar?: string
+	lastSeen?: Date
+	homeTown?: string
+	familyStatus?: FamilyStatus
+	posts: IPosts[]
 }
 
 export interface IAuthResponse {
@@ -23,24 +33,19 @@ export interface IAuthResponse {
 	user: IUser
 }
 
-export interface IUserResponse{
-	name?: string
+export interface IUserResponse extends IBase{
 	email?: string
-	phone?: string
-	lastName?:string
-	post?: string
-	organization?: string
-	createdAt?: Date
+  name?: string
 	about?: string
-	avatar?: string
-	workInterval?: number
-	breakInterval?: number
-	intervalsCount?: number
-	sidebarWidth?: string
+	lastName?: string
+  avatar?: string   
+  lastSeen?: Date
+  familyStatus?: FamilyStatus
+  homeTown?: string
 }
 
 
 export type TypeUserForm = Omit<IUser, 'id'> & { password?: string }
-export type TypeUserUpdateForm = Omit<IUserResponse, 'id' | 'roles' | 'createdAt'>
+export type TypeUserUpdateForm = Omit<IUserResponse, 'id'> & { password?: string }
 export type TypeUserFormState = Partial<IUser>
 

@@ -1,4 +1,4 @@
-import { IUser, TypeUserFormState } from '@/types/auth.types'
+import { IUser, TypeUserUpdateForm } from '@/types/auth.types'
 
 import { axiosWithAuth } from '@/api/interceptors'
 
@@ -45,7 +45,7 @@ class UserService {
 		return response.data
 	}
 
-	async update(data: TypeUserFormState) {
+	async update(data: TypeUserUpdateForm) {
 		try {
 			const response = await axiosWithAuth.put(this.BASE_URL, data)
 			return response.data
@@ -53,6 +53,16 @@ class UserService {
 			console.error(error)
 		}
 	}
+
+	async deleteUser(id: string){
+		try {
+			const response = await axiosWithAuth.put(`${this.BASE_URL}/${id}`)
+			return response.data
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
 }
 
 export const userService = new UserService()

@@ -14,44 +14,6 @@ export const authService = {
 		return response
 	},
 
-	async sendConfirmationCode(data: IAuthForm) {
-		const response = await axiosClassic.post('/auth/send-code', data)
-		return response.data
-	},
-
-	async confirmCode(email: string, code: string, data: IAuthForm) {
-		const password = data.password
-		try {
-			const response = await axiosClassic.post<IAuthResponse>(
-				'/auth/check-code',
-				{
-					checkCodeDto: {
-						email,
-						code
-					},
-					dto: {
-						email,
-						password
-					}
-				}
-			)
-			if (response.data.accessToken) {
-				saveTokenStorage(response.data.accessToken)
-			}
-
-			return response
-		} catch (error: any) {
-			if (error.response) {
-				console.error(error.response.data)
-				// return Promise.reject(error.response.data || 'Error')
-				throw error
-			} else {
-				console.error(error)
-				// return Promise.reject('Error')
-				throw error
-			}
-		}
-	},
 
 	async getNewTokens() {
 		const response = await axiosClassic.post<IAuthResponse>(
