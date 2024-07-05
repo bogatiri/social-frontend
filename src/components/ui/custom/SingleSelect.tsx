@@ -16,11 +16,13 @@ interface ISingleSelect {
 	value: string
 	isColorSelect?: boolean
 	text?: string
+	className?: string
 }
 
 export function SingleSelect({
 	data,
 	onChange,
+	className,
 	value,
 	text,
 	isColorSelect
@@ -31,11 +33,11 @@ export function SingleSelect({
 		<div
 			className={cn('relative cursor-pointer ', {
 				'w-max': isColorSelect
-			})}
+			}, className)}
 			ref={ref}
 		>
 			<label
-				className={`text-sm text-white/60 dark:text-white ml-1.5 font-medium`}
+				className={`text-sm  ml-1.5 font-medium`}
 			>
 				Family Status
 			</label>
@@ -49,10 +51,10 @@ export function SingleSelect({
 			>
 				{getValue() ? (
 					<div
-						className={`flex w-full items-center justify-center border border-border rounded-t-lg mt-2 duration-500 hover:duration-0 text-primary-foreground text-white hover:bg-primary/80 px-4 ${!isShow && 'rounded-lg duration-500'}`}
+						className={`flex w-full items-center justify-center border border-border rounded-t-lg mt-2 duration-500 hover:duration-0   hover:bg-primary/80 px-4 ${!isShow && 'rounded-lg duration-500'}`}
 					>
 						<Badge
-							className='capitalize flex w-full items-center justify-center   text-white bg-white/0 p-3 text-xs outline-none placeholder:text-white/30 placeholder:font-normal duration-500 transition-colors'
+							className='capitalize flex w-full items-center justify-center    bg-white/0 p-3 text-xs text-foreground  outline-none  placeholder:font-normal duration-500 transition-colors'
 							style={isColorSelect ? { backgroundColor: value } : {}}
 						>
 							{getValue()}
@@ -65,10 +67,10 @@ export function SingleSelect({
 					</>
 				) : (
 					<div
-						className={`flex w-full items-center justify-center border border-border rounded-t-lg mt-2 duration-500 hover:duration-0 text-primary-foreground text-white hover:bg-primary/80 px-4 ${!isShow && 'rounded-lg duration-500'}`}
+						className={`flex w-full items-center justify-center border border-border rounded-t-lg mt-2 duration-500 hover:duration-0  hover:bg-primary px-4 ${!isShow && 'rounded-lg duration-500'}`}
 					>
 						<Badge
-							className='capitalize flex w-full items-center justify-center   text-white bg-white/0 p-3 text-xs outline-none placeholder:text-white/30 placeholder:font-normal duration-500 transition-colors'
+							className='capitalize flex w-full items-center justify-center    bg-white/0 p-3 text-xs text-foreground outline-none  placeholder:font-normal duration-500 transition-colors'
 							style={isColorSelect ? { backgroundColor: value } : {}}
 						>
 							Click for select...
@@ -103,7 +105,7 @@ export function SingleSelect({
 								}
 							>
 								<Badge
-									className={`hover:bg-primary/80  h-10 text-xs flex w-full items-center justify-center rounded-none text-white bg-white/0 p-1 outline-none placeholder:text-white/30 placeholder:font-normal duration-500 transition-colors focus:border-primary ${index === data.length - 1 && 'rounded-b-lg'}`}
+									className={`hover:bg-primary h-10 text-xs text-foreground flex w-full items-center justify-center rounded-none bg-background  p-1 outline-none  placeholder:font-normal duration-500 transition-colors focus:border-primary ${index === data.length - 1 && 'rounded-b-lg'}`}
 								>
 									{(item.label === 'in_love' && 'In love') ||
 										(item.label === 'married' && 'Married') ||

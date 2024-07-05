@@ -50,8 +50,8 @@ const Sidebar = () => {
 
 	return (
 		<TooltipProvider>
-			<aside className='inset-y fixed left-0 z-20 flex h-full flex-col border-r'>
-				<div className='border-b p-2'>
+			<aside className='inset-y fixed left-0 z-20 flex h-full flex-col border-r border-input'>
+				<div className='border-b border-input p-2'>
 					<Button
 						variant='outline'
 						size='icon'
@@ -107,6 +107,9 @@ const Sidebar = () => {
 
 					<Tooltip>
 						<TooltipTrigger asChild>
+							<Link
+							href='/i/friends'
+							>
 							<Button
 								variant='ghost'
 								size='icon'
@@ -115,6 +118,7 @@ const Sidebar = () => {
 							>
 								<Bot className='size-5' />
 							</Button>
+								</Link>
 						</TooltipTrigger>
 						<TooltipContent
 							side='right'

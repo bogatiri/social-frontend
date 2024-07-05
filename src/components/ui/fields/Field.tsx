@@ -21,7 +21,7 @@ export const Field = forwardRef<HTMLInputElement, InputFieldProps>(
 			<div className={`${extra}`}>
 				<label
 					htmlFor={id}
-					className={`text-sm text-white/60 dark:text-white ml-1.5 font-medium`}
+					className={`text-sm  ml-1.5 font-medium`}
 				>
 					{label}
 				</label>
@@ -32,7 +32,7 @@ export const Field = forwardRef<HTMLInputElement, InputFieldProps>(
 					id={id}
 					autoComplete='off'
 					placeholder={placeholder}
-					className={`mt-2 flex w-full items-center justify-center rounded-lg border border-border text-white bg-white/0 p-3 text-base outline-none placeholder:text-white/30 placeholder:font-normal duration-500 transition-colors focus:border-primary ${
+					className={`mt-2 flex w-full items-center justify-center rounded-lg border border-border  bg-white/0 p-3 text-base outline-none  placeholder:font-normal duration-500 transition-colors focus:border-primary ${
 						disabled === true
 							? '!border-none !bg-gray-100 dark:!bg-white/5 dark:placeholder:!text-[rgba(255,255,255,0.15)]'
 							: state === 'error'

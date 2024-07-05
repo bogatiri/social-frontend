@@ -10,7 +10,7 @@ import ProfileHeader from './_components/profile-header'
 
 const Profile = () => {
 	return (
-		<div className='flex ml-14 px-16 lg:px-52 p-4 flex-col gap-10 h-screen'>
+		<div className='flex ml-14 px-16 lg:px-52 p-4 flex-col gap-10 '>
 			<ProfileHeader />
 			<div className='grid lg:grid-cols-[1fr_0.3fr] justify-between gap-6 h-full w-full'>
 				<div className='flex flex-col rounded-lg gap-4 '>

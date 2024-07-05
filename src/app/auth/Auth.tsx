@@ -59,6 +59,22 @@ export function Auth() {
 						required: 'Email is required!'
 					})}
 				/>
+				<Field
+					id='name'
+					label='Name:'
+					placeholder='Enter name:'
+					type='name'
+					extra='mb-4'
+					{...register('name', {})}
+				/>
+				<Field
+					id='lastName'
+					label='LastName:'
+					placeholder='Enter lastName:'
+					type='lastName'
+					extra='mb-4'
+					{...register('lastName', {})}
+				/>
 
 				<Field
 					id='password'

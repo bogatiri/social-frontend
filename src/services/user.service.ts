@@ -2,19 +2,11 @@ import { IUser, TypeUserUpdateForm } from '@/types/auth.types'
 
 import { axiosWithAuth } from '@/api/interceptors'
 
-export interface IProfileResponse {
-	user: IUser
-	statistics: {
-		label: string
-		value: string
-	}[]
-}
-
 class UserService {
 	private BASE_URL = '/user/profile'
 
 	async getProfile() {
-		const response = await axiosWithAuth.get<IProfileResponse>(this.BASE_URL)
+		const response = await axiosWithAuth.get<IUser>(this.BASE_URL)
 		return response.data
 	}
 
@@ -23,25 +15,8 @@ class UserService {
 		return response.data
 	}
 
-	async setAvatar({ id, file }: { id: string; file: File }) {
-		const formData = new FormData()
-		formData.append('avatar', file)
-
-		const response = await axiosWithAuth.post(
-			`${this.BASE_URL}/${id}`,
-			formData,
-			{
-				headers: {
-					'Content-Type': 'multipart/form-data'
-				}
-			}
-		)
-
-		return response
-	}
-
-	async getAvatar(avatar: string){
-		const response = await axiosWithAuth.post(`${this.BASE_URL}/avatar`, {avatar})
+	async findByName(name: string) {
+		const response = await axiosWithAuth.put(`${this.BASE_URL}/name`, {name})
 		return response.data
 	}
 
@@ -57,6 +32,25 @@ class UserService {
 	async deleteUser(id: string){
 		try {
 			const response = await axiosWithAuth.put(`${this.BASE_URL}/${id}`)
+			return response.data
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+	async sendRequestToFriends(idRecipient: string) {
+		const response = await axiosWithAuth.put(`${this.BASE_URL}/sendRequest`, {idRecipient})
+		return response.data
+	}
+
+	async acceptFriendRequest(idSender: string, requestId: string) {
+		const response = await axiosWithAuth.put(`${this.BASE_URL}/acceptRequest`, {idSender, requestId})
+		return response.data
+	}
+
+	async rejectFriendRequest(id: string){
+		try {
+			const response = await axiosWithAuth.delete(`${this.BASE_URL}/deleteRequest/${id}`)
 			return response.data
 		} catch (error) {
 			console.error(error)

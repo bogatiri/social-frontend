@@ -33,7 +33,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en' suppressHydrationWarning>
-			<body className={cn(zen.className, 'custom-scrollbar')}>
+			<body className={cn(zen.className, 'custom-scrollbar bg-background')}>
 				<Providers>
 					<Toaster
 						theme='dark'

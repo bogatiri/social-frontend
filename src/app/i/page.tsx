@@ -30,7 +30,7 @@ import {
 
 export const Dashboard = () => {
 	return (
-		<div className='grid h-[calc(100vh-57px)]  w-full pl-[56px]'>
+		<div className='grid h-[calc(100vh-57px)] w-full pl-[56px]'>
 			<TooltipProvider>
 				<div className='flex flex-col'>
 					<main className='grid flex-1 gap-4 overflow-auto p-4 md:grid-cols-2 lg:grid-cols-3'>
@@ -39,7 +39,7 @@ export const Dashboard = () => {
 							x-chunk='dashboard-03-chunk-0'
 						>
 							<form className='grid w-full items-start gap-6'>
-								<fieldset className='grid gap-6 rounded-lg border p-4'>
+								<fieldset className='grid gap-6 rounded-lg border border-input p-4'>
 									<legend className='-ml-1 px-1 text-sm font-medium'>
 										Settings
 									</legend>
@@ -141,7 +141,7 @@ export const Dashboard = () => {
 										</div>
 									</div>
 								</fieldset>
-								<fieldset className='grid gap-6 rounded-lg border p-4'>
+								<fieldset className='grid gap-6 rounded-lg border border-input p-4'>
 									<legend className='-ml-1 px-1 text-sm font-medium'>
 										Messages
 									</legend>
@@ -178,7 +178,7 @@ export const Dashboard = () => {
 							</Badge>
 							<div className='flex-1' />
 							<form
-								className='relative overflow-hidden rounded-lg border bg-background focus-within:ring-1 focus-within:ring-ring'
+								className='relative overflow-hidden rounded-lg border bg-background border-input focus-within:ring-1 focus-within:ring-ring'
 								x-chunk='dashboard-03-chunk-1'
 							>
 								<Label

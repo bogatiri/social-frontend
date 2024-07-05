@@ -9,9 +9,32 @@ export enum FamilyStatus {
   ActivelyLooking = 'ActivelyLooking',
 }
 
+export enum RequestStatus {
+  pending= 'notMarried',
+  accepted ='accepted',
+  reject ='rejected',
+}
+
+export interface IFriendships{
+	id: string
+	friendId: string
+	userId: string
+	friend: IUser
+}
+export interface IFriendRequests{
+	id: string
+	recipientId: string
+	senderId: string
+	status: RequestStatus
+	sender: IUser
+	recipient: IUser
+}
+
 export interface IAuthForm {
 	email: string
 	password: string
+	name: string
+	lastName: string
 	code: string,
 	accessToken: string
 }
@@ -24,6 +47,9 @@ export interface IUser extends IBase {
 	avatar?: string
 	lastSeen?: Date
 	homeTown?: string
+	friendRequests: IFriendRequests[]
+	senderFriendRequest: IFriendRequests[]
+	friendships: IFriendships[]
 	familyStatus?: FamilyStatus
 	posts: IPosts[]
 }

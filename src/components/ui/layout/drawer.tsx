@@ -41,7 +41,7 @@ const DrawerComponent = () => {
 					</DrawerDescription>
 				</DrawerHeader>
 				<form className='grid w-full items-start gap-6 overflow-auto p-4 pt-0'>
-					<fieldset className='grid gap-6 rounded-lg border p-4'>
+					<fieldset className='grid gap-6 rounded-lg border border-input p-4'>
 						<legend className='-ml-1 px-1 text-sm font-medium'>Settings</legend>
 						<div className='grid gap-3'>
 							<Label htmlFor='model'>Model</Label>
@@ -138,7 +138,7 @@ const DrawerComponent = () => {
 							/>
 						</div>
 					</fieldset>
-					<fieldset className='grid gap-6 rounded-lg border p-4'>
+					<fieldset className='grid gap-6 rounded-lg  border border-input p-4'>
 						<legend className='-ml-1 px-1 text-sm font-medium'>Messages</legend>
 						<div className='grid gap-3'>
 							<Label
