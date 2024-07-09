@@ -100,7 +100,7 @@ const SearchFriends = () => {
 
 		
 			<div className='flex flex-col items-center justify-between'>
-				{data!.senderFriendRequest.length > 0 && (
+				{data?.senderFriendRequest && data?.senderFriendRequest.length > 0 && (
 					<span>SendedRequests</span>
 				)}
 				{data?.senderFriendRequest.map(request => (
@@ -127,7 +127,7 @@ const SearchFriends = () => {
 				))}
 			</div>
 			<div className='flex flex-col mt-4 items-center justify-between'>
-			{data!.friendRequests.length > 0 && (
+			{data?.friendRequests && data?.friendRequests.length > 0 && (
 					<span>Friend Request</span>
 				)}
 				{data?.friendRequests.map(request => (

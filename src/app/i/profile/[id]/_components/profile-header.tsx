@@ -14,6 +14,7 @@ import { useUserId } from '../../hooks/user/useUserId'
 import { useSendRequestToFriend } from '@/app/i/friends/hooks/useSendRequestToFriend'
 import { useRejectRequest } from '@/app/i/friends/hooks/useRejectRequest'
 import { IFriendRequests } from '@/types/auth.types'
+import { useCreateChat } from '@/app/i/chats/hooks/useCreateChat'
 
 const ProfileHeader = () => {
 	const { user, isLoading, error } = useUserId()
@@ -34,13 +35,16 @@ const ProfileHeader = () => {
 	useEffect(() => {
 		if(user){
 			const checkIsMyFriend = user?.friendships.filter(
-				friend => friend.id === userId
+				friendships => friendships.friendId  === currentUser
 			)
+
 			setIsMyFriend(checkIsMyFriend.length > 0 ? true: false)
 		}
-	}, [])
+	}, [isLoading])
 
 	const { sendRequest } = useSendRequestToFriend()
+
+	const {createChat} = useCreateChat()
 
 	const {rejectFriendRequest} = useRejectRequest()
 
@@ -52,6 +56,7 @@ const ProfileHeader = () => {
 				setMy(isMy)
 			}
 	}, [user])
+
 
 	return (
 		<div className='grid grid-cols-[0.9fr_0.1fr] bg-gradient-to-r from-slate-500 to-stone-800 w-full h-64 md:h-56 rounded-lg p-4'>
@@ -87,17 +92,39 @@ const ProfileHeader = () => {
 						<Button variant='default'>Edit Profile</Button>
 					</Link>
 				) : isMyFriend ? (
+					<div className='flex flex-col gap-3'>
 					<Button>Delete Friend</Button>
+					<Button
+					onClick={() => createChat(userId)}
+					>
+						Create chat
+					</Button>
+					</div>
 				) : isRequestSended ? (
+					<div className='flex flex-col gap-3'>
 					<Button
 					variant='outline'
 					onClick={() => rejectFriendRequest(isRequestSended.id)}
 					>
 						Reject request
 					</Button>
+					<Button
+					onClick={() => createChat(userId)}
+					>
+						Create chat
+					</Button>
+						</div>
 				) 
 				: (
+					<div className='flex flex-col gap-3'>
 					<Button onClick={() => sendRequest(userId)}>Add Friend</Button>
+					<Button
+					onClick={() => createChat(userId)}
+					>
+						Create chat
+					</Button>
+					</div>
+					
 				)}
 			</div>
 		</div>

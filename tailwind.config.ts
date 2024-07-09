@@ -80,25 +80,27 @@ const config = {
         '.custom-scrollbar::-webkit-scrollbar': {
 					width : '6px',
           height: '8px',
+
         },
         '.custom-scrollbar::-webkit-scrollbar-thumb': {
 					backgroundColor: '#1c1c1c',
 					width: '8px',
           borderRadius: '10px',
-					opacity: '0'
-
+					opacity: '0',
         },
         '.custom-scrollbar::-webkit-scrollbar-thumb:hover': {
           backgroundColor: '#383838',
 					width: '8px',
-					opacity: '100'
-
+					opacity: '100',
+          cursor:'pointer'
         },
         '.custom-scrollbar::-webkit-scrollbar-track': {
           backgroundColor: 'transition',
 					width: '8px',
 					opacity: '10',
           borderRadius: '10px',
+          marginLeft: '2px'
+
         },
       })
     },

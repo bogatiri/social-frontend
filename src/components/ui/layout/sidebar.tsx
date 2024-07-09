@@ -9,7 +9,8 @@ import {
 	Settings2,
 	SquareTerminal,
 	SquareUser,
-	Triangle
+	Triangle,
+	Users
 } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
@@ -85,13 +86,13 @@ const Sidebar = () => {
 					<Tooltip>
 						<TooltipTrigger asChild>
 							<Link
-							href='/i'
+							href='/i/chats'
 							>
 							<Button
 								variant='ghost'
 								size='icon'
 								className={`rounded-lg ${currentPage === undefined && 'bg-muted'}`}
-								aria-label='Playground'
+								aria-label='Chats'
 							>
 								<SquareTerminal className='size-5' />
 							</Button>
@@ -101,7 +102,7 @@ const Sidebar = () => {
 							side='right'
 							sideOffset={5}
 						>
-							Playground
+							Chats
 						</TooltipContent>
 					</Tooltip>
 
@@ -114,9 +115,9 @@ const Sidebar = () => {
 								variant='ghost'
 								size='icon'
 								className='rounded-lg'
-								aria-label='Models'
+								aria-label='Friends'
 							>
-								<Bot className='size-5' />
+								<Users className='size-5' />
 							</Button>
 								</Link>
 						</TooltipTrigger>
@@ -124,7 +125,7 @@ const Sidebar = () => {
 							side='right'
 							sideOffset={5}
 						>
-							Models
+							Friends
 						</TooltipContent>
 					</Tooltip>
 					<Tooltip>

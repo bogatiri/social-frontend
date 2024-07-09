@@ -1,5 +1,5 @@
 class DASHBOARD {
-	private root = '/i'
+	private root = '/i/chats'
 
 	HOME = this.root
 }
